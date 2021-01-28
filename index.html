@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="calcular-edad.css">
+
+</head>
+<body>
+    
+
+    <form action="#" method="get" onsubmit="false" id="form">
+        
+        <input type="number" name="cantidad" id="cantidad"><label for="cantidad">Ingrese la cantidad de miembros de su grupo familiar</label>
+        <br><br>
+        <input id="agregar" type="button" value="Calcular" class="oculto"><input type="reset" value="reset"><input type="submit" value="limpiar"><br>
+        
+    </form>
+
+    <div id="integrantes"></div>
+
+    <div id="analisis" class="oculto">
+
+        <p> La mayor edad es: <strong id="mayor-edad"></strong></p>
+
+        <p>La menor edad es: <strong id="menor-edad"></strong></p>
+
+        <p>El promedio de edad es:<strong id="promedio-edad"></strong></p>
+
+
+    </div>
+
+    <script src="calcular-edad.js"></script>
+</body>
+</html>
