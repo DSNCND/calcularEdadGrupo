@@ -26,14 +26,27 @@ let agregarIntegrantes =
         let form = document.querySelector("#form");
         for (let c = 0; c < cantidad; c++) {
             let input = document.createElement("input")
+            input.type="number";
             input.setAttribute("id", "l" + c)
             input.classList.add("reset")
             input.classList.add("value-edad")
+            //
+            input.addEventListener
+            ("keyup", k =>
+                {
+                    console.log(k)
+
+                console.log(k.key.toString())
+                
+                    if(k.key.toString() === "Enter") { calcular() }
+                }
+            )
+            //document.querySelector("#calcular").onclick = calcular;
 
             let label = document.createElement("label")
             label.classList.add("reset")
             label.setAttribute("for","l"+c)
-            label.innerHTML="<b> Ingrese la edad</b>"
+            label.innerHTML=`<b> Ingrese la edad del integrante ${c+1}#</b>`
             let br = document.querySelector("br")
             form.append(br,input,label)
         }
@@ -136,7 +149,7 @@ function obtenerPromedio(array)
 }
 
 document.querySelector("#calcular").onclick = calcular;
-
+// hacer que al apretar enter se envie
 
 /*
 Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados (investigar cómo en MDN).
