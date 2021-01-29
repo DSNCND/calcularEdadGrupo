@@ -2,3 +2,15 @@
 {
     display:none;
 }
+
+form
+{
+    width: 80vw;
+    margin: auto;
+    border: 2px solid black;
+}
+
+input
+{
+    width:50%;
+}

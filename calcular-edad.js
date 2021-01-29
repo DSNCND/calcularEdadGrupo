@@ -4,8 +4,11 @@ Crear tantos inputs+labels como gente haya para completar la edad de cada integr
 Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad, la menor edad y el promedio del grupo familiar.
 */
 
+//Faltaria hacer tests 
+//limite para cantidad de integrantes ej: menos de 100 // implementado en el html
+//faltaria agregar js en un evento onerror o addeventlistener equivalente
 
-///////  agregar/kitar integrantes
+///////agregar/kitar integrantes
 let resetearIntegrantes =
 function ()
 {
@@ -23,16 +26,21 @@ function ()
 let agregarIntegrantes =
     function (cantidad) {
         let form = document.querySelector("#form");
+        if(cantidad>100){return}
         for (let c = 0; c < cantidad; c++) {
             let input = document.createElement("input")
             input.type="number";
             input.setAttribute("id", "l" + c)
             input.classList.add("reset")
             input.classList.add("value-edad")
-            
+            //
             input.addEventListener
             ("keyup", k =>
                 {
+                    console.log(k)
+
+                console.log(k.key.toString())
+                
                     if(k.key.toString() === "Enter") { calcular() }
                 }
             )
@@ -56,6 +64,16 @@ let agregarIntegrantes =
     }
 
 
+let resetear =
+ function () {
+    resetearIntegrantes()
+    let arrayDeValues = document.querySelectorAll(".value-edad");
+    if (!arrayDeValues.length > 0) {
+        document.querySelector("#analisis").classList.add("oculto")
+    }
+}
+
+
 //definir cantidad de integrantes
 let integrantes = document.querySelector("#cantidad");
 
@@ -64,14 +82,10 @@ integrantes.onkeyup=function()
     let cantidad = integrantes.value;
     agregarIntegrantes(cantidad);
 }
-integrantes.onkeydown=function()
-{
-    resetearIntegrantes()
-    let arrayDeValues = document.querySelectorAll(".value-edad");
-    if(!arrayDeValues.length>0){
-        document.querySelector("#analisis").classList.add("oculto")
-    }
-}
+
+integrantes.onkeydown=resetear
+ let botonreset = document.querySelector("#reset")
+ botonreset.onclick=resetear
 
 
 
@@ -87,6 +101,7 @@ let calcular =
     let valores = document.querySelectorAll(".value-edad")
     for (let index = 0; index < valores.length; index++) 
     {
+        
         arrayDeValues.push(valores[index].value)
     }
     
@@ -97,6 +112,7 @@ let calcular =
     document.querySelector("#mayor-edad").innerText=mayor;
     document.querySelector("#menor-edad").innerText=menor;
     document.querySelector("#promedio-edad").innerText=promedio;
+
     if (arrayDeValues.length > 0) {
         document.querySelector("#analisis").classList.remove("oculto")
     }
@@ -149,7 +165,7 @@ function obtenerPromedio(array)
 }
 
 document.querySelector("#calcular").onclick = calcular;
-
+// hacer que al apretar enter se envie
 
 /*
 Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados (investigar cómo en MDN).
