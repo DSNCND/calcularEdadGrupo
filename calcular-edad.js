@@ -5,8 +5,7 @@ Al hacer click en "calcular", mostrar en un elemento pre-existente la mayor edad
 */
 
 
-
-///////agregar/kitar integrantes
+///////  agregar/kitar integrantes
 let resetearIntegrantes =
 function ()
 {
@@ -30,14 +29,10 @@ let agregarIntegrantes =
             input.setAttribute("id", "l" + c)
             input.classList.add("reset")
             input.classList.add("value-edad")
-            //
+            
             input.addEventListener
             ("keyup", k =>
                 {
-                    console.log(k)
-
-                console.log(k.key.toString())
-                
                     if(k.key.toString() === "Enter") { calcular() }
                 }
             )
@@ -154,7 +149,7 @@ function obtenerPromedio(array)
 }
 
 document.querySelector("#calcular").onclick = calcular;
-// hacer que al apretar enter se envie
+
 
 /*
 Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuevamente, borrando los inputs ya creados (investigar cómo en MDN).
