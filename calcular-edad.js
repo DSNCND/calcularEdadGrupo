@@ -41,7 +41,7 @@ let agregarIntegrantes =
                     if(k.key.toString() === "Enter") { calcular() }
                 }
             )
-            //document.querySelector("#calcular").onclick = calcular;
+            
 
             let label = document.createElement("label")
             label.classList.add("reset")
@@ -139,13 +139,18 @@ function obtenerMenorNumero(array)
 
 function obtenerPromedio(array)
 {
-    total=Number(array[0])
-    console.log(total);
-    for(let n =1;n<array.length;n++)
+    let total=0;
+    let vacios=0;
+    
+    for(let n =0;n<array.length;n++)
     {
+        if(array[n]=="")
+        {
+            vacios++;
+        }
         total+=Number(array[n]);
     }
-    return (total/array.length).toFixed(2)
+    return (total/(array.length-vacios)).toFixed(2)
 }
 
 document.querySelector("#calcular").onclick = calcular;
